@@ -11,6 +11,7 @@ class CreateUserController {
       email,
       password,
     });
+
     return res.json(createUser);
   }
 }
