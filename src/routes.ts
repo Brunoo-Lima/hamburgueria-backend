@@ -18,9 +18,10 @@ import { AddItemsOrderController } from './controllers/order/AddItemsOrderContro
 import { RemoveItemOrderController } from './controllers/order/RemoveItemOrderController';
 import { SendOrderController } from './controllers/order/SendOrderController';
 import { ListOrderController } from './controllers/order/ListOrderController';
+import { FinishOrderController } from './controllers/order/FinishOrderController';
+import { DetailOrderController } from './controllers/order/DetailOrderController';
 
 import uploadConfig from './config/multer';
-import { FinishOrderController } from './controllers/order/FinishOrderController';
 
 const router = Router();
 
@@ -67,6 +68,11 @@ router.put(
   '/order/finish',
   isAuthenticated,
   new FinishOrderController().handle,
+);
+router.get(
+  '/order/detail',
+  isAuthenticated,
+  new DetailOrderController().handle,
 );
 
 export { router };
