@@ -1,6 +1,8 @@
 import { Request, Response, Router } from 'express';
 import multer from 'multer';
 
+import { isAuthenticated } from './middlewares/isAuthenticated';
+
 import { CreateUserController } from './controllers/user/CreateUserController';
 import { AuthUserController } from './controllers/user/AuthUserController';
 import { DetailUserController } from './controllers/user/DetailUserController';
@@ -10,8 +12,9 @@ import { ListCategoryController } from './controllers/category/ListCategoryContr
 import { CreateProductController } from './controllers/product/CreateProductController';
 import { ListByCategoryController } from './controllers/product/ListByCategoryController';
 
-import uploadConfig from './config/multer';
 import { CreateOrderController } from './controllers/order/CreateOrderController';
+
+import uploadConfig from './config/multer';
 
 const router = Router();
 
@@ -20,21 +23,26 @@ const upload = multer(uploadConfig.upload('./tmp'));
 //--ROTAS USER--\\
 router.post('/user', new CreateUserController().handle);
 router.post('/session', new AuthUserController().handle);
-router.get('/me', new DetailUserController().handle);
+router.get('/me', isAuthenticated, new DetailUserController().handle);
 
 //--ROTAS CATEGORY--\\
-router.post('/category', new CreateCategoryController().handle);
-router.get('/category', new ListCategoryController().handle);
+router.post(
+  '/category',
+  isAuthenticated,
+  new CreateCategoryController().handle,
+);
+router.get('/category', isAuthenticated, new ListCategoryController().handle);
 
 //--ROTAS PRODUCT--\\
 router.post(
   '/product',
+  isAuthenticated,
   upload.single('file'),
   new CreateProductController().handle,
 );
-router.get('/product', new ListByCategoryController().handle);
+router.get('/product', isAuthenticated, new ListByCategoryController().handle);
 
 //--ROTAS ORDER--\\
-router.post('/order', new CreateOrderController().handle);
+router.post('/order', isAuthenticated, new CreateOrderController().handle);
 
 export { router };
