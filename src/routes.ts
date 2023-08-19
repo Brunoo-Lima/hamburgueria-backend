@@ -8,7 +8,9 @@ import { CreateCategoryController } from './controllers/category/CreateCategoryC
 import { ListCategoryController } from './controllers/category/ListCategoryController';
 
 import uploadConfig from './config/multer';
+
 import { CreateProductController } from './controllers/product/CreateProductController';
+import { ListByCategoryController } from './controllers/product/ListByCategoryController';
 
 const router = Router();
 
@@ -23,10 +25,12 @@ router.get('/me', new DetailUserController().handle);
 router.post('/category', new CreateCategoryController().handle);
 router.get('/category', new ListCategoryController().handle);
 
+//--ROTAS PRODUCT--\\
 router.post(
   '/product',
   upload.single('file'),
   new CreateProductController().handle,
 );
+router.get('/product', new ListByCategoryController().handle);
 
 export { router };
