@@ -1,5 +1,17 @@
 <h1 align="center"> Sistema de pedidos de uma Hamburgueria </h1>
 
-<p align="center">
-<img loading="lazy" src="http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge"/>
-</p>
+O projeto consiste no qual o garçom/atendente utiliza o aplicativo para anotar pedidos, e manda diretamente para o computador que fica na cozinha. Na tela do computador terá todas as informações que precisa para o pedido ser feito.
+
+Utilizei CRUD para criar, ler, atualizar e deletar pedidos, além disso, só pessoas autorizadas poderia alterar diretamente no sistema.
+
+## Tecnologias Utilizadas
+
+- Node
+- TypeScript
+- Express
+- Prisma
+- PostgreSQL
+
+## Relacionados
+
+Projeto Front-End e Mobile em breve.
