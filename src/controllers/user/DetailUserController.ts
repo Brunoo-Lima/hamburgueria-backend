@@ -6,9 +6,7 @@ class DetailUserController {
     const user_id = req.query.user_id as string;
 
     const detailUserService = new DetailUserService();
-    const detailUser = await detailUserService.execute({
-      user_id,
-    });
+    const detailUser = await detailUserService.execute(user_id);
 
     return res.json(detailUser);
   }
