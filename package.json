@@ -25,7 +25,5 @@
     "jsonwebtoken": "^9.0.1",
     "multer": "^1.4.5-lts.1",
     "prisma": "^5.1.1"
-  },
-  "repository": "https://github.com/Brunoo-Lima/project-hamburgueria-backend.git",
-  "author": "Bruno Lima <93183810+Brunoo-Lima@users.noreply.github.com>"
+  }
 }
